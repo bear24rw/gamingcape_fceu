@@ -1,0 +1,89 @@
+file /home/root/fceu2.1.5/SConstruct,line 57:
+	Configure(confdir = .sconf_temp)
+scons: Configure: Checking for C library SDL... 
+scons: Configure: ".sconf_temp/conftest_0.c" is up to date.
+scons: Configure: The original builder output was:
+  |.sconf_temp/conftest_0.c <-
+  |  |
+  |  |
+  |  |
+  |  |int
+  |  |main() {
+  |  |  
+  |  |return 0;
+  |  |}
+  |  |
+  |
+gcc -o .sconf_temp/conftest_0.o -c -Wall -Wno-write-strings -Wno-sign-compare -O2 -Isrc/lua/src -DPUBLIC_RELEASE .sconf_temp/conftest_0.c
+scons: Configure: ".sconf_temp/conftest_0" is up to date.
+scons: Configure: The original builder output was:
+  |gcc -o .sconf_temp/conftest_0 .sconf_temp/conftest_0.o -lSDL
+  |
+scons: Configure: yes
+
+scons: Configure: Checking for C library gd... 
+scons: Configure: ".sconf_temp/conftest_1.c" is up to date.
+scons: Configure: The original builder output was:
+  |.sconf_temp/conftest_1.c <-
+  |  |
+  |  |
+  |  |
+  |  |int
+  |  |main() {
+  |  |  
+  |  |return 0;
+  |  |}
+  |  |
+  |
+gcc -o .sconf_temp/conftest_1.o -c -Wall -Wno-write-strings -Wno-sign-compare -O2 -Isrc/lua/src -pthread -D_GTK -DLUA_USE_LINUX -DPUBLIC_RELEASE -D_GTK2 -D_S9XLUA_H -I/usr/include/gtk-2.0 -I/usr/lib/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12 .sconf_temp/conftest_1.c
+gcc -o .sconf_temp/conftest_1 -pthread .sconf_temp/conftest_1.o -lSDL -lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -lgio-2.0 -lpangoft2-1.0 -lpangocairo-1.0 -lgdk_pixbuf-2.0 -lcairo -lpango-1.0 -lfreetype -lfontconfig -lgobject-2.0 -lglib-2.0 -lz -ldl -lX11 -lgd
+/usr/lib/gcc/arm-angstrom-linux-gnueabi/4.7.3/../../../../arm-angstrom-linux-gnueabi/bin/ld: cannot find -lgd
+collect2: error: ld returned 1 exit status
+scons: Configure: no
+
+scons: Configure: Checking for C function asprintf()... 
+scons: Configure: ".sconf_temp/conftest_2.c" is up to date.
+scons: Configure: The original builder output was:
+  |.sconf_temp/conftest_2.c <-
+  |  |
+  |  |
+  |  |#include <assert.h>
+  |  |
+  |  |#ifdef __cplusplus
+  |  |extern "C"
+  |  |#endif
+  |  |char asprintf();
+  |  |
+  |  |int main() {
+  |  |#if defined (__stub_asprintf) || defined (__stub___asprintf)
+  |  |  fail fail fail
+  |  |#else
+  |  |  asprintf();
+  |  |#endif
+  |  |
+  |  |  return 0;
+  |  |}
+  |  |
+  |
+gcc -o .sconf_temp/conftest_2.o -c -Wall -Wno-write-strings -Wno-sign-compare -O2 -Isrc/lua/src -pthread -D_GTK -DLUA_USE_LINUX -DPUBLIC_RELEASE -D_GTK2 -D_S9XLUA_H -I/usr/include/gtk-2.0 -I/usr/lib/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12 .sconf_temp/conftest_2.c
+gcc -o .sconf_temp/conftest_2 -pthread .sconf_temp/conftest_2.o -lSDL -lgtk-x11-2.0 -lgdk-x11-2.0 -latk-1.0 -lgio-2.0 -lpangoft2-1.0 -lpangocairo-1.0 -lgdk_pixbuf-2.0 -lcairo -lpango-1.0 -lfreetype -lfontconfig -lgobject-2.0 -lglib-2.0 -lz -ldl -lX11
+scons: Configure: yes
+
+scons: Configure: Checking for C++ library GL... 
+.sconf_temp/conftest_3.cpp <-
+  |
+  |
+  |#include "GL/gl.h"
+  |
+  |int
+  |main() {
+  |  
+  |return 0;
+  |}
+  |
+g++ -o .sconf_temp/conftest_3.o -c -Wall -Wno-write-strings -Wno-sign-compare -O2 -Isrc/lua/src -pthread -D_GTK -DLUA_USE_LINUX -DHAVE_ASPRINTF -DPUBLIC_RELEASE -D_GTK2 -D_S9XLUA_H -I/usr/include/gtk-2.0 -I/usr/lib/gtk-2.0/include -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/glib-2.0/include -I/usr/include/pixman-1 -I/usr/include/freetype2 -I/usr/include/libpng12 .sconf_temp/conftest_3.cpp
+.sconf_temp/conftest_3.cpp:3:19: fatal error: GL/gl.h: No such file or directory
+compilation terminated.
+scons: Configure: no
+
+
