@@ -5,14 +5,14 @@ import platform
 opts = Variables()
 opts.AddVariables(
   BoolVariable('FRAMESKIP', 'Enable frameskipping', 1),
-  BoolVariable('OPENGL',    'Enable OpenGL support', 1),
+  BoolVariable('OPENGL',    'Enable OpenGL support', 0),
   BoolVariable('LSB_FIRST', 'Least signficant byte first (non-PPC)', 1),
   BoolVariable('DEBUG',     'Build with debugging symbols', 0),
-  BoolVariable('LUA',       'Enable Lua support', 1),
+  BoolVariable('LUA',       'Enable Lua support', 0),
   BoolVariable('NEWPPU',    'Enable new PPU core', 1),
-  BoolVariable('CREATE_AVI', 'Enable avi creation support (SDL only)', 1),
-  BoolVariable('LOGO', 'Enable a logoscreen when creating avis (SDL only)', '1'),
-  BoolVariable('GTK', 'Enable GTK2 GUI (SDL only)', 1),
+  BoolVariable('CREATE_AVI', 'Enable avi creation support (SDL only)', 0),
+  BoolVariable('LOGO', 'Enable a logoscreen when creating avis (SDL only)', '0'),
+  BoolVariable('GTK', 'Enable GTK2 GUI (SDL only)', 0),
   BoolVariable('GTK3', 'Enable GTK3 GUI (BROKEN/EXPERIMENTAL)', 0),
 )
 
