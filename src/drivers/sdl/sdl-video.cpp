@@ -593,6 +593,7 @@ BlitScreen(uint8 *XBuf)
     SDL_Surface *TmpScreen;
     uint8 *dest;
     int xo = 0, yo = 0;
+    int x = 0, y = 0;
 
     if(!s_screen) {
         return;
@@ -641,23 +642,31 @@ BlitScreen(uint8 *XBuf)
 
     // XXX soules - again, I'm surprised SDL can't handle this
     // perform the blit, converting bpp if necessary
+    // center screen vertically (240-224)/2 = 8
     if(s_curbpp > 8) {
         if(s_BlitBuf) {
-            Blit8ToHigh(XBuf + NOFFSET, dest, NWIDTH, s_tlines,
+            Blit8ToHigh(XBuf + NOFFSET, dest+(TmpScreen->pitch*8), NWIDTH, s_tlines,
                         TmpScreen->pitch, 1, 1);
         } else {
-            Blit8ToHigh(XBuf + NOFFSET, dest, NWIDTH, s_tlines,
+            Blit8ToHigh(XBuf + NOFFSET, dest+(TmpScreen->pitch*8), NWIDTH, s_tlines,
                         TmpScreen->pitch, (int)s_exs, (int)s_eys);
         }
     } else {
         if(s_BlitBuf) {
-            Blit8To8(XBuf + NOFFSET, dest, NWIDTH, s_tlines,
+            Blit8To8(XBuf + NOFFSET, dest+(TmpScreen->pitch*8), NWIDTH, s_tlines,
                      TmpScreen->pitch, 1, 1, 0, s_sponge);
         } else {
-            Blit8To8(XBuf + NOFFSET, dest, NWIDTH, s_tlines,
+            Blit8To8(XBuf + NOFFSET, dest+(TmpScreen->pitch*8), NWIDTH, s_tlines,
                      TmpScreen->pitch, (int)s_exs, (int)s_eys,
                      s_eefx, s_sponge);
         }
+    }
+
+    // center screen horizontally (320-256)/2 = 32
+    int Bpp = TmpScreen->format->BitsPerPixel/8;
+    for (y = 0; y < TmpScreen->h; y++) {
+        memmove(dest+(y*TmpScreen->pitch)+(32*Bpp), dest+(y*TmpScreen->pitch), 256*Bpp);
+        memset(dest+(y*TmpScreen->pitch), 0, 32*Bpp);
     }
 
     // unlock the display, if necessary
