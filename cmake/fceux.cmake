@@ -251,6 +251,7 @@ set(SRC_DRIVERS_SDL
   ${CMAKE_SOURCE_DIR}/src/drivers/sdl/sdl-throttle.cpp
   ${CMAKE_SOURCE_DIR}/src/drivers/sdl/sdl-video.cpp
   ${CMAKE_SOURCE_DIR}/src/drivers/sdl/unix-netplay.cpp
+  ${CMAKE_SOURCE_DIR}/src/drivers/sdl/beagleboy.cpp
 )
 
 if(FCEUX_SDL_OPENGL)
