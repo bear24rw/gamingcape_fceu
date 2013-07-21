@@ -46,6 +46,7 @@
 #endif
 #endif
 
+#include "beagleboy.h"
 
 /** GLOBALS **/
 int NoWaiting=1;
@@ -931,6 +932,16 @@ UpdateGamepad(void)
         }
     }
 
+    bb_refresh();
+    if (bb_joy_x > 200) JS |= (1 << 7);
+    if (bb_joy_x < -200) JS |= (1 << 6);
+    if (bb_joy_y < -200) JS |= (1 << 5);
+    if (bb_joy_y > 200) JS |= (1 << 4);
+    if (bb_joy_y > 200 && bb_a && bb_b) JS |= (1 << 3);
+    if (bb_joy_y < -200 && bb_a && bb_b) JS |= (1 << 2);
+    if (bb_b) JS |= (1 << 1);
+    if (bb_a) JS |= (1 << 0);
+
     //  for(x=0;x<32;x+=8)	/* Now, test to see if anything weird(up+down at same time)
     //			   is happening, and correct */
     //  {
@@ -1157,6 +1168,9 @@ InitInputInterface()
 
     FCEUI_SetInputFC((ESIFC)InputType[2], InputDPtr, attrib);
     FCEUI_SetInputFourscore((eoptions & EO_FOURSCORE)!=0);
+
+    bb_init();
+    bb_load_cal();
 }
 
 
