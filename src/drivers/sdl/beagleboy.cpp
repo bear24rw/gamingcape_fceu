@@ -28,8 +28,8 @@ int min_y, max_y;
 int center_x, center_y;
 
 void bb_init() {
-	fd_x = open("/sys/devices/ocp.2/helper.12/AIN0", O_RDONLY);
-	fd_y = open("/sys/devices/ocp.2/helper.12/AIN2", O_RDONLY);
+	fd_x = open("/home/root/AIN0", O_RDONLY);
+	fd_y = open("/home/root/AIN2", O_RDONLY);
 	fd_a = open("/sys/class/gpio/gpio61/value", O_RDONLY);
 	fd_b = open("/sys/class/gpio/gpio49/value", O_RDONLY);
 
@@ -96,7 +96,7 @@ void bb_refresh() {
 void bb_cal() {
 
 	FILE *file;
-	file = fopen("cal.txt", "w");
+	file = fopen("/home/root/cal.txt", "w");
 	if (!file) printf("Failed to open cal.txt\n");
 
 	bb_refresh();
@@ -138,7 +138,7 @@ void bb_cal() {
 
 void bb_load_cal() {
 	FILE *file;
-	file = fopen("cal.txt", "r");
+	file = fopen("/home/root/cal.txt", "r");
 	if (!file) printf("Failed to open cal.txt\n");
 	fscanf(file, "%i,%i,%i,%i,%i,%i", &min_x, &center_x, &max_x, &min_y, &center_y, &max_y);
 	fclose(file);
