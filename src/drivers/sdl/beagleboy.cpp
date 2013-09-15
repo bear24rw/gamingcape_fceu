@@ -79,12 +79,12 @@ void bb_refresh() {
 		bb_b = !atoi(buf_b);
 
 		// compensate using calibration data
-		bb_joy_x = (raw_bb_joy_x - center_x);
-		if (bb_joy_x > 0) bb_joy_x *= 1000 / (max_x - center_x);
-		else 		  bb_joy_x *= 1000 / (center_x - min_x);
-		bb_joy_y = (raw_bb_joy_y - center_y);
-		if (bb_joy_y > 0) bb_joy_y *= 1000 / (max_y - center_y);
-		else 		  bb_joy_y *= 1000 / (center_y - min_y);
+		bb_joy_x = (raw_bb_joy_x - center_x) * 1000;
+		bb_joy_y = (raw_bb_joy_y - center_y) * 1000;
+		if (bb_joy_x > 0) bb_joy_x /= (max_x - center_x);
+		else              bb_joy_x /= (center_x - min_x);
+		if (bb_joy_y > 0) bb_joy_y /= (max_y - center_y);
+		else              bb_joy_y /= (center_y - min_y);
 
 		lseek(fd_x,0,0);
 		lseek(fd_y,0,0);
